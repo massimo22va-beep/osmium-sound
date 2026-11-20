@@ -14,19 +14,19 @@ This directory is the isolated ARM64 build entry point. It does not replace or m
 
 The candidate image generator is Raspberry Pi's official [rpi-image-gen](https://github.com/raspberrypi/rpi-image-gen). The configuration is deliberately based on its upstream Trixie-minbase example and the documented `rpi5` device layer. This keeps the Raspberry Pi firmware, kernel and boot layout under the Raspberry Pi-specific image-generation workflow rather than trying to reuse the PC installer.
 
-Use a native Debian Trixie ARM64 build host where possible. Upstream documents amd64 cross-building with QEMU as possible but not formally supported; native ARM64 is the preferred first validation environment.
+Pin the image generator to the upstream **v2.8.0** release (commit `262d4df5a9f9d4133370465399a7958a7c22cdc7`) for this initial port. Do not silently build against a moving `master` branch. Use a native Debian Bookworm/Trixie ARM64 build host; upstream specifically recommends an up-to-date 64-bit Raspberry Pi OS host. amd64/QEMU and container builds may work but are not the formally supported path.
 
 Example workflow (after installing the prerequisites described by the upstream project):
 
 ```sh
-git clone https://github.com/raspberrypi/rpi-image-gen.git
+git clone --branch v2.8.0 --depth 1 https://github.com/raspberrypi/rpi-image-gen.git
 cd rpi-image-gen
 sudo ./install_deps.sh
 cd -
-rpi-image-gen build -S ./rpi5 -c ./rpi5/osmium-rpi5.yaml
+rpi-image-gen build -S /absolute/path/to/osmium-sound/rpi5 -c /absolute/path/to/osmium-sound/rpi5/osmium-rpi5.yaml
 ```
 
-Run the build command from the rpi-image-gen checkout, replacing the final source path with the absolute path to this repository's `rpi5/` directory if necessary.
+Run the build command from the rpi-image-gen checkout. Full host preparation, output handling and safe SD-card flashing notes are in [BUILD-HOST.md](BUILD-HOST.md).
 
 ## Current profile scope
 
