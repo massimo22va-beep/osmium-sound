@@ -25,7 +25,7 @@ sudo ./install_deps.sh
 ./rpi-image-gen build -S /absolute/path/to/osmium-sound/rpi5 -c /absolute/path/to/osmium-sound/rpi5/osmium-rpi5.yaml
 ```
 
-Run the build command from the rpi-image-gen checkout. Full host preparation, output handling and safe SD-card flashing notes are in [BUILD-HOST.md](BUILD-HOST.md).
+Run the build command from the rpi-image-gen checkout. Full host preparation, output handling and safe SD-card flashing notes are in [BUILD-HOST.md](BUILD-HOST.md). The secure account and SSH provisioning approach is documented in [PROVISIONING-DESIGN.md](PROVISIONING-DESIGN.md); it is a design only and is not enabled in the image yet.
 
 ## Current profile scope
 
