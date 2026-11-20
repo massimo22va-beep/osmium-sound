@@ -22,8 +22,7 @@ Example workflow (after installing the prerequisites described by the upstream p
 git clone --branch v2.8.0 --depth 1 https://github.com/raspberrypi/rpi-image-gen.git
 cd rpi-image-gen
 sudo ./install_deps.sh
-cd -
-rpi-image-gen build -S /absolute/path/to/osmium-sound/rpi5 -c /absolute/path/to/osmium-sound/rpi5/osmium-rpi5.yaml
+./rpi-image-gen build -S /absolute/path/to/osmium-sound/rpi5 -c /absolute/path/to/osmium-sound/rpi5/osmium-rpi5.yaml
 ```
 
 Run the build command from the rpi-image-gen checkout. Full host preparation, output handling and safe SD-card flashing notes are in [BUILD-HOST.md](BUILD-HOST.md).
