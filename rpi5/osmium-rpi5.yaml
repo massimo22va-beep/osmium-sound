@@ -1,0 +1,26 @@
+# Osmium Sound - Raspberry Pi 5 ARM64 bring-up profile
+#
+# Based on the upstream rpi-image-gen Trixie-minbase configuration:
+# https://github.com/raspberrypi/rpi-image-gen/blob/master/config/trixie-minbase.yaml
+#
+# This is an early boot-validation profile, not a release image.
+# Do not add x86 GRUB, shim, or linux-image-amd64 packages here.
+
+device:
+  layer: rpi5
+  storage_type: sd
+
+image:
+  layer: image-rpios
+  boot_part_size: 200%
+  root_part_size: 300%
+  name: osmium-rpi5-arm64
+
+layer:
+  base: trixie-minbase
+
+packages:
+  - alsa-utils
+  - squeezelite
+  - curl
+  - ca-certificates
